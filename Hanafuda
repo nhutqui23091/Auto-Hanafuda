@@ -1,0 +1,30 @@
+let count = 0;
+function clickElements() {
+    if (count < 1000) {
+        // Kiểm tra phần tử đầu tiên trước khi click
+        let element1 = document.querySelector('body > div > div > div:nth-child(3) > div > div.relative.z-10.grid.size-full.flex-1.grid-cols-1.grid-rows-\\[20\\%_60\\%_20\\%\\].content-center.items-center.justify-center.justify-items-center.p-6 > div.relative.flex.size-full.flex-col.items-center.justify-center > div > div > canvas');
+        if (element1) {
+            element1.click();
+            console.log('Clicked button 1');
+        } else {
+            console.log('Button 1 not found');
+        }
+
+        // Đợi 5 giây rồi click vào phần tử thứ hai
+        setTimeout(function() {
+            let element2 = document.querySelector('body > div > div > div:nth-child(3) > div > div.relative.z-10.grid.size-full.flex-1.grid-cols-1.grid-rows-\\[20\\%_60\\%_20\\%\\].content-center.items-center.justify-center.justify-items-center.p-6 > div.relative.flex.w-full.items-center.justify-center.gap-1\\.5.lg\\:gap-3 > button.flex.cursor-pointer.items-center.justify-center.font-medium.tracking-\\[0\\.24px\\].disabled\\:cursor-default.shiny-button-color-red.shiny-button.h-\\[57px\\].w-\\[224px\\].rounded-\\[8px\\].text-\\[12px\\].max-w-\\[128px\\].gap-1\\.5.sm\\:gap-3.lg\\:w-\\[224px\\].lg\\:max-w-full');
+            if (element2) {
+                element2.click();
+                console.log('Clicked button 2');
+            } else {
+                console.log('Button 2 not found');
+            }
+
+            count++; // Tăng biến đếm sau mỗi lượt
+            setTimeout(clickElements, 3000); // Sau 3 giây lặp lại quá trình
+        }, 3000); // Đợi 3 giây sau khi click lần 1
+    }
+}
+
+// Bắt đầu quá trình
+clickElements();
